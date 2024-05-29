@@ -28,10 +28,13 @@ def Q1(imgname):
     H = np.array([[1.5, 0.5, 0], [0,2.5,0], [0,0,1]])
     length, width, channels = image.shape
     warpedImage = cv2.warpPerspective(image, H, (length*3, width*2))
+    print("Warped perspective 1")
     sift = cv2.SIFT_create()
     
     grayImage = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    print("computing key points")
     imageKeyPoints, des = sift.detectAndCompute(grayImage,None)
+    print("computed key points")
     
     
     grayWarpedImage = cv2.cvtColor(warpedImage, cv2.COLOR_RGB2GRAY)
